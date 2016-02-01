@@ -4,5 +4,6 @@
 rv-externals
 
 libbot-demo
+rv-lcmgl-maze
 rv-lcm-viewer
 
