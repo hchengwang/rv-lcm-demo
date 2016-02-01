@@ -7,6 +7,8 @@ pod-build
 
 # Latexian
 TSWLatexianTemp*
+
+*~
 *.o
 *.class
 **/*.swp
