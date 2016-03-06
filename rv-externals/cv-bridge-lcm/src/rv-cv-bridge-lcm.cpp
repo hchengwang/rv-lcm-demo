@@ -5,7 +5,7 @@
  *      Author: drc
  */
 
-#include "cv_bridge_lcm/bl-cv-bridge-lcm.h"
+#include "cv_bridge_lcm/rv-cv-bridge-lcm.h"
 
 using namespace std;
 using namespace cv;
