@@ -102,6 +102,8 @@ void cvBridgeLCM::publish_mjpg(Mat im, char * out_channel){
 	msg_rgb_jpg.size = buf.size() * sizeof(uint8_t);
 
 	bot_core_image_t_publish(publish_lcm_, out_channel, &msg_rgb_jpg);
+
+	free(buf2);
 }
 
 void cvBridgeLCM::publish_mjpg(vector<unsigned char> buf, int width, int height,
@@ -124,6 +126,8 @@ void cvBridgeLCM::publish_mjpg(vector<unsigned char> buf, int width, int height,
 	msg_rgb_jpg.size = buf.size() * sizeof(uint8_t);
 
 	bot_core_image_t_publish(publish_lcm_, out_channel, &msg_rgb_jpg);
+
+	free(buf2);
 }
 
 void cvBridgeLCM::publish_gray_z(Mat im, char * out_channel){
