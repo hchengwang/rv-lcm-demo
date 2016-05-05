@@ -40,7 +40,11 @@ public:
 	virtual ~cvBridgeLCM();
 
 	void publish_rgb(cv::Mat im, char * out_channel);
+
 	void publish_mjpg(cv::Mat im, char * out_channel);
+	void publish_mjpg(std::vector<unsigned char> compressed_buf,
+			int width, int height, char * out_channel);
+
 	void publish_gray(cv::Mat im, char * out_channel);
 	void publish_gray_float(cv::Mat im, char * out_channel);
 	void publish_gray_z(cv::Mat im, char * out_channel);

@@ -104,6 +104,28 @@ void cvBridgeLCM::publish_mjpg(Mat im, char * out_channel){
 	bot_core_image_t_publish(publish_lcm_, out_channel, &msg_rgb_jpg);
 }
 
+void cvBridgeLCM::publish_mjpg(vector<unsigned char> buf, int width, int height,
+		char * out_channel){
+
+	bot_core_image_t msg_rgb_jpg; // RGB jpeg
+	msg_rgb_jpg.utime = bot_timestamp_now();
+	msg_rgb_jpg.width = width;
+	msg_rgb_jpg.height = height;
+	msg_rgb_jpg.row_stride = 3 * width;
+	msg_rgb_jpg.pixelformat = BOT_CORE_IMAGE_T_PIXEL_FORMAT_MJPEG;
+	msg_rgb_jpg.nmetadata=0;
+	msg_rgb_jpg.metadata=NULL;
+
+	uint8_t* buf2 = new uint8_t[buf.size()];
+	for(int i = 0; i < buf.size(); i++){
+		buf2[i] = (uint8_t)buf[i];
+	}
+	msg_rgb_jpg.data = buf2;
+	msg_rgb_jpg.size = buf.size() * sizeof(uint8_t);
+
+	bot_core_image_t_publish(publish_lcm_, out_channel, &msg_rgb_jpg);
+}
+
 void cvBridgeLCM::publish_gray_z(Mat im, char * out_channel){
 	bot_core_image_t msg_gray; // GRAY
 	msg_gray.utime = bot_timestamp_now();
